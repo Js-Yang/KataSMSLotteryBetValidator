@@ -15,11 +15,11 @@ namespace SMSLotteryBetValidator.Tests
             Assert.AreEqual(expected, Kata.ValidateBet(count, max, input));
         }
 
-        [TestCase(2, 1, "1", null, TestName = "When numbers is smaller then count should return null")]
-        [TestCase(1, 1, "1,2", null, TestName = "When numbers is greater then count should return null")]
-        public void ValidateBet_When_Input_is_Invalid(int count, int max, string input, int[] expected)
+        [TestCase(2, 1, "1", TestName = "When numbers is smaller then count should return null")]
+        [TestCase(1, 2, "1,2", TestName = "When numbers is greater then count should return null")]
+        public void ValidateBet_When_Input_is_Invalid(int count, int max, string input)
         {
-            Assert.AreEqual(expected, Kata.ValidateBet(count, max, input));
+            Assert.AreEqual(null, Kata.ValidateBet(count, max, input));
         }
     }
 }
