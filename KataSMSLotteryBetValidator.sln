@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KataSMSLotteryBetValidator", "KataSMSLotteryBetValidator\KataSMSLotteryBetValidator.csproj", "{8928AA8B-3125-4946-8C98-0E6EFEEAA585}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSLotteryBetValidator.Tests", "SMSLotteryBetValidator.Tests\SMSLotteryBetValidator.Tests.csproj", "{28E75D47-1763-4E83-9D3B-CED4CD1CCB3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8928AA8B-3125-4946-8C98-0E6EFEEAA585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8928AA8B-3125-4946-8C98-0E6EFEEAA585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8928AA8B-3125-4946-8C98-0E6EFEEAA585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E75D47-1763-4E83-9D3B-CED4CD1CCB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E75D47-1763-4E83-9D3B-CED4CD1CCB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E75D47-1763-4E83-9D3B-CED4CD1CCB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E75D47-1763-4E83-9D3B-CED4CD1CCB3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
