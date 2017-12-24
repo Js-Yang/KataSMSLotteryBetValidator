@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Linq;
 
-namespace KataSMSLotteryBetValidator
+public static class Kata
 {
-    public class Kata
+    public static int[] ValidateBet(int count, int maxNum, string input)
     {
-        public static int[] ValidateBet(int count, int maxNum, string input)
+        var LotteryNumber = input.Split(' ', ',').Where(x => x != string.Empty).Select(x => Convert.ToInt32(x)).ToArray();
+        if (IsValid(count, maxNum, LotteryNumber))
         {
-            var LotteryNumber = input.Split(' ', ',').Select(x => Convert.ToInt32(x)).ToArray();
-            if (IsValid(count, maxNum, LotteryNumber))
-            {
-                return LotteryNumber.OrderBy(num => num).ToArray();
-            }
-
-            return null;
+            return LotteryNumber.OrderBy(num => num).ToArray();
         }
 
-        private static bool IsValid(int count, int maxNum, int[] lotteryNumber)
-        {
-            return lotteryNumber.Length == count && maxNum >= lotteryNumber.Max() && lotteryNumber.Distinct().Count() == lotteryNumber.Length;
-        }
+        return null;
+    }
+
+    private static bool IsValid(int count, int maxNum, int[] lotteryNumber)
+    {
+        return lotteryNumber.Length == count && maxNum >= lotteryNumber.Max() && lotteryNumber.Distinct().Count() == lotteryNumber.Length;
     }
 }
+
