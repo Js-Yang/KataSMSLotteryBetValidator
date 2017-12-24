@@ -6,20 +6,12 @@ namespace SMSLotteryBetValidator.Tests
     [TestFixture]
     public class KataTests
     {
-        [Test]
-        public void ValidateBet_Count_Is_1_Max_Is_1_numbers_are_1_Should_Return_1()
-        {
-            var expected = new int[] { 1 };
-            var result = Kata.ValidateBet(1, 1, "1");
-            Assert.AreEqual(expected, result);
-        }
 
-        [Test]
-        public void ValidateBet_When_Input_Is_2_1_Count_is_2_And_Max_is_2_Should_Return_1_2()
+        [TestCase(1, 1, "1", new[] { 1 }, TestName = "Count is 1 and max is 1 and input is '1' Should Return [1]")]
+        [TestCase(2, 2, "2 1", new[] { 1, 2 }, TestName = "Count is 2 and max is 2 and input is '2 1' Should Return [1 2]")]
+        public void ValidateBet_When_Input_is_Valid(int count, int max, string input, int[] expected)
         {
-            var expected = new int[] { 1, 2 };
-            var result = Kata.ValidateBet(2, 2, "2 1");
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, Kata.ValidateBet(count, max, input));
         }
     }
 }

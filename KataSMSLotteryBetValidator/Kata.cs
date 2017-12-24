@@ -5,9 +5,9 @@ namespace KataSMSLotteryBetValidator
 {
     public class Kata
     {
-        public static int[] ValidateBet(int count, int maxNum, string numbers)
+        public static int[] ValidateBet(int count, int maxNum, string input)
         {
-            var LotteryNumber = numbers.Split(' ').Select(x => Convert.ToInt32(x)).ToArray();
+            var LotteryNumber = input.Split(' ').Select(x => Convert.ToInt32(x)).ToArray();
             return LotteryNumber.OrderBy(num => num).ToArray();
         }
     }
