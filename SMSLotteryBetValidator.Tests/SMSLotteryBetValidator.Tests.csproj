@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KataSMSLotteryBetValidator\KataSMSLotteryBetValidator.csproj">
+      <Project>{8928AA8B-3125-4946-8C98-0E6EFEEAA585}</Project>
+      <Name>KataSMSLotteryBetValidator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
