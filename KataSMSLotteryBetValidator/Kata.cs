@@ -16,9 +16,9 @@ namespace KataSMSLotteryBetValidator
             return null;
         }
 
-        private static bool IsValid(int count, int maxNum, int[] LotteryNumber)
+        private static bool IsValid(int count, int maxNum, int[] lotteryNumber)
         {
-            return LotteryNumber.Length == count && maxNum >= LotteryNumber.Max();
+            return lotteryNumber.Length == count && maxNum >= lotteryNumber.Max() && lotteryNumber.Distinct().Count() == lotteryNumber.Length;
         }
     }
 }
