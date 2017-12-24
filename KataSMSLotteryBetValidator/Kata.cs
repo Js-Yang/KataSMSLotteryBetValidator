@@ -8,11 +8,17 @@ namespace KataSMSLotteryBetValidator
         public static int[] ValidateBet(int count, int maxNum, string input)
         {
             var LotteryNumber = input.Split(' ', ',').Select(x => Convert.ToInt32(x)).ToArray();
-            if (LotteryNumber.Length != count || maxNum < LotteryNumber.Max())
+            if (IsValid(count, maxNum, LotteryNumber))
             {
-                return null;
+                return LotteryNumber.OrderBy(num => num).ToArray();
             }
-            return LotteryNumber.OrderBy(num => num).ToArray();
+
+            return null;
+        }
+
+        private static bool IsValid(int count, int maxNum, int[] LotteryNumber)
+        {
+            return LotteryNumber.Length == count && maxNum >= LotteryNumber.Max();
         }
     }
 }
