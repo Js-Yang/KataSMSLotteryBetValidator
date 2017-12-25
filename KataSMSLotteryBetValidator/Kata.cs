@@ -5,36 +5,50 @@ public static class Kata
 {
     private static int maxLimit;
 
-    private static int minLimit = 1;
+    private static int minLimit;
 
-    private static int[] lotteryNumber;
+    private static int countLimit;
 
+    private static int[] lotteryNumbers;
+    
     public static int[] ValidateBet(int countLimit, int maxLimit, string input)
     {
-        Kata.maxLimit = maxLimit;
-        var a = 0;
-        lotteryNumber = input.Split(' ', ',').Where(x => x != string.Empty && int.TryParse(x, out a)).Select(x => Convert.ToInt32(x)).ToArray();
-        if (IsCountEqaulTo(countLimit) && IsWithinRange() && IsUnique())
-        {
-            return lotteryNumber.OrderBy(num => num).ToArray();
-        }
-
-        return null;
+        SetLimit(countLimit, maxLimit);
+        lotteryNumbers = Parse(input);
+        return IsValid() ? lotteryNumbers.OrderBy(num => num).ToArray() : null;
     }
 
-    private static bool IsUnique()
+    private static void SetLimit(int countLimit, int maxLimit)
     {
-        return lotteryNumber.Distinct().Count() == lotteryNumber.Length;
+        minLimit = 1;
+        Kata.maxLimit = maxLimit;
+        Kata.countLimit = countLimit;
+    }
+
+    private static bool IsValid()
+    {
+        return IsCountEqaulTo(countLimit) && IsWithinRange() && IsNumbersUnique();
+    }
+
+    private static int[] Parse(string input)
+    {
+        int isInteger;
+        return input.Split(' ', ',').Where(x => x != string.Empty && int.TryParse(x, out isInteger)).Select(x => Convert.ToInt32(x)).ToArray();
+    }
+
+    private static bool IsNumbersUnique()
+    {
+        return lotteryNumbers.Distinct().Count() == lotteryNumbers.Length;
     }
 
     private static bool IsWithinRange()
     {
-        return lotteryNumber.Max() <= maxLimit && lotteryNumber.Min() >= minLimit;
+        return lotteryNumbers.Max() <= maxLimit && lotteryNumbers.Min() >= minLimit;
     }
 
     private static bool IsCountEqaulTo(int count)
     {
-        return lotteryNumber.Length == count;
+        return lotteryNumbers.Length == count;
     }
 }
 
