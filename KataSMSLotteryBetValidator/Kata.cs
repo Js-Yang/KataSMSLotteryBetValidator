@@ -3,21 +3,38 @@ using System.Linq;
 
 public static class Kata
 {
-    public static int[] ValidateBet(int count, int maxNum, string input)
+    private static int maxLimit;
+
+    private static int minLimit = 1;
+
+    private static int[] lotteryNumber;
+
+    public static int[] ValidateBet(int countLimit, int maxLimit, string input)
     {
-        int a = 0;
-        var LotteryNumber = input.Split(' ', ',').Where(x => x != string.Empty && int.TryParse(x, out a)).Select(x => Convert.ToInt32(x)).ToArray();
-        if (IsValid(count, maxNum, LotteryNumber))
+        Kata.maxLimit = maxLimit;
+        var a = 0;
+        lotteryNumber = input.Split(' ', ',').Where(x => x != string.Empty && int.TryParse(x, out a)).Select(x => Convert.ToInt32(x)).ToArray();
+        if (IsCountEqaulTo(countLimit) && IsWithinRange() && IsUnique())
         {
-            return LotteryNumber.OrderBy(num => num).ToArray();
+            return lotteryNumber.OrderBy(num => num).ToArray();
         }
 
         return null;
     }
 
-    private static bool IsValid(int count, int maxNum, int[] lotteryNumber)
+    private static bool IsUnique()
     {
-        return lotteryNumber.Length == count && maxNum >= lotteryNumber.Max() && lotteryNumber.Distinct().Count() == lotteryNumber.Length && lotteryNumber.Min() >= 1;
+        return lotteryNumber.Distinct().Count() == lotteryNumber.Length;
+    }
+
+    private static bool IsWithinRange()
+    {
+        return lotteryNumber.Max() <= maxLimit && lotteryNumber.Min() >= minLimit;
+    }
+
+    private static bool IsCountEqaulTo(int count)
+    {
+        return lotteryNumber.Length == count;
     }
 }
 
