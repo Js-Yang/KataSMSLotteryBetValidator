@@ -5,8 +5,7 @@ public static class Kata
 {
     public static int[] ValidateBet(int countLimit, int maxLimit, string input)
     {
-        var minLimit = 1;
-        var lottery = new Lottery(countLimit, maxLimit, minLimit);
+        var lottery = new Lottery(countLimit, maxLimit);
         lottery.Parse(input);
         return lottery.GetSortedNumbers();
     }
@@ -22,7 +21,7 @@ public class Lottery
 
     private readonly int minLimit;
 
-    public Lottery(int countLimit, int maxLimit, int minLimit)
+    public Lottery(int countLimit, int maxLimit, int minLimit = 1)
     {
         this.countLimit = countLimit;
         this.maxLimit = maxLimit;
