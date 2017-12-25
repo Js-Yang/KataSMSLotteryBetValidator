@@ -21,6 +21,7 @@ namespace SMSLotteryBetValidator.Tests
         [TestCase(1, 2, "1,2", TestName = "When numbers is greater then count should return null")]
         [TestCase(2, 1, "1,2", TestName = "When one of numbers is over max should return null")]
         [TestCase(2, 3, "2,2", TestName = "When numbers is not unique should return null")]
+        [TestCase(3, 3, "2, 3; 1", TestName = "When numbers inlcude not integer should return null")]
         public void ValidateBet_When_Input_is_Invalid(int count, int max, string input)
         {
             Assert.AreEqual(null, Kata.ValidateBet(count, max, input));
